@@ -14,7 +14,7 @@ services:
     image: ghcr.io/jhhgiyv/highlight2api:latest
     container_name: highlight2api
     ports:
-      - "8080:8080"
+      - "9999:8080"
     volumes:
       - ./config:/app/config
     environment:
