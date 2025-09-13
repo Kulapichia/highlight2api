@@ -2,9 +2,9 @@ name: Docker Image CI
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "main" ]
   pull_request:
-    branches: [ "master" ]
+    branches: [ "main" ]
 
 jobs:
   build-and-push:
@@ -46,9 +46,9 @@ jobs:
           context: .
           file: ./Dockerfile
           platforms: linux/amd64,linux/arm64
-          # 仅在 push 事件且是 master 分支时才真正推送
+          # 仅在 push 事件且是 main 分支时才真正推送
           # 对于 PR 事件，只构建不推送，可以避免不必要的镜像推送
-          push: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
+          push: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
