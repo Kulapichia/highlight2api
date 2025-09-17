@@ -111,7 +111,7 @@
             margin-bottom: 6px;
         }
         
-        .form-input {
+        .form-input, .form-select, .form-textarea {
             width: 100%;
             padding: 12px 16px;
             border: 1px solid #d2d2d7;
@@ -121,14 +121,30 @@
             color: #1d1d1f;
             transition: border-color 0.15s ease;
         }
+
+        .form-textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
         
-        .form-input:focus {
+        .form-input:focus, .form-select:focus, .form-textarea:focus {
             outline: none;
             border-color: #007aff;
         }
         
-        .form-input::placeholder {
+        .form-input::placeholder, .form-textarea::placeholder {
             color: #a1a1a6;
+        }
+        
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            margin-top: 16px;
+            margin-bottom: 16px;
+        }
+
+        .checkbox-group input {
+            margin-right: 8px;
         }
         
         .btn {
@@ -213,6 +229,8 @@
             padding: 16px;
             border-radius: 8px;
             display: none;
+            white-space: pre-wrap;
+            word-wrap: break-word;
         }
         
         .result.success {
@@ -485,7 +503,52 @@
         <div class="result" id="result">
             <div id="resultContent"></div>
         </div>
-        
+
+        <!-- START: 新增的聊天测试部分 -->
+        <div class="section">
+            <div class="section-title">
+                <span class="step-number">3</span>
+                测试聊天接口
+            </div>
+            <div class="section-content">
+                测试您的 API Key 是否能正常调用聊天接口：
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="chatTestApiKey">API Key</label>
+                <input type="text" id="chatTestApiKey" class="form-input" placeholder="请输您的 API Key">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="chatTestModel">选择模型</label>
+                <select id="chatTestModel" class="form-select">
+                    <option value="">请先输入 API Key 获取模型列表</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="chatTestMessage">测试消息</label>
+                <textarea id="chatTestMessage" class="form-textarea" placeholder="输入要测试的消息, 例如：你好, 请介绍一下自己">你好</textarea>
+            </div>
+
+            <div class="checkbox-group">
+                <input type="checkbox" id="chatTestStream" checked>
+                <label for="chatTestStream">流式响应</label>
+            </div>
+
+            <button class="btn" onclick="testChat()" id="chatTestBtn">测试聊天接口</button>
+
+            <div class="loading" id="chatTestLoading">
+                <span class="loading-spinner"></span>
+                正在等待响应...
+            </div>
+
+            <div class="result" id="chatTestResult">
+                <div id="chatTestResultContent"></div>
+            </div>
+        </div>
+        <!-- END: 新增的聊天测试部分 -->
+
         <div class="info-section">
             <div class="info-title">API 端点</div>
             <div style="font-size: 14px; color: #6e6e73; line-height: 1.5;">
@@ -562,6 +625,8 @@
                         </div>
                     `);
                     
+                    document.getElementById('apiKeyInput').value = apiKey;
+                    document.getElementById('chatTestApiKey').value = apiKey;
                     // 自动加载模型列表
                     await loadModels(apiKey);
                 } else {
@@ -691,13 +756,16 @@
         
         function displayModels(models) {
             const modelsList = document.getElementById('modelsList');
+            const chatTestModelSelect = document.getElementById('chatTestModel');
             
             if (!models || models.length === 0) {
-                modelsList.innerHTML = `
+                const noModelHtml = `
                     <div style="text-align: center; color: #6e6e73; padding: 16px;">
                         未找到可用模型
                     </div>
                 `;
+                modelsList.innerHTML = noModelHtml;
+                chatTestModelSelect.innerHTML = '<option value="">未找到可用模型</option>';
                 return;
             }
             
@@ -710,6 +778,7 @@
             }, {});
             
             let html = '';
+            let selectHtml = '';
             for (const [provider, providerModels] of Object.entries(modelsByProvider)) {
                 html += `
                     <div style="margin-bottom: 16px;">
@@ -731,6 +800,7 @@
                             </button>
                         </div>
                     `;
+                    selectHtml += `<option value="${model.id}">${model.id}</option>`;
                 });
                 
                 html += `
@@ -740,6 +810,7 @@
             }
             
             modelsList.innerHTML = html;
+            chatTestModelSelect.innerHTML = selectHtml;
         }
         
         function copyModelName(modelName) {
@@ -760,6 +831,95 @@
             });
         }
         
+        // START: 新增的聊天测试功能
+        async function testChat() {
+            const apiKey = document.getElementById('chatTestApiKey').value.trim();
+            const model = document.getElementById('chatTestModel').value;
+            const message = document.getElementById('chatTestMessage').value.trim();
+            const stream = document.getElementById('chatTestStream').checked;
+            
+            const btn = document.getElementById('chatTestBtn');
+            const loading = document.getElementById('chatTestLoading');
+            const resultDiv = document.getElementById('chatTestResult');
+            const resultContent = document.getElementById('chatTestResultContent');
+            
+            if (!apiKey || !model || !message) {
+                resultDiv.className = 'result error';
+                resultContent.innerHTML = '<h4>错误</h4><p>API Key、模型和测试消息不能为空。</p>';
+                resultDiv.style.display = 'block';
+                return;
+            }
+
+            btn.disabled = true;
+            loading.style.display = 'block';
+            resultDiv.style.display = 'none';
+            resultContent.innerHTML = '';
+
+            const payload = {
+                model: model,
+                messages: [{ role: 'user', content: message }],
+                stream: stream
+            };
+
+            try {
+                const response = await fetch('/v1/chat/completions', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${apiKey}`
+                    },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    throw new Error(errorData.error.message || `请求失败, 状态码: ${response.status}`);
+                }
+
+                resultDiv.className = 'result success';
+                resultDiv.style.display = 'block';
+
+                if (stream) {
+                    const reader = response.body.getReader();
+                    const decoder = new TextDecoder();
+                    let fullContent = '';
+
+                    while (true) {
+                        const { done, value } = await reader.read();
+                        if (done) break;
+                        
+                        const chunk = decoder.decode(value, { stream: true });
+                        const lines = chunk.split('\n').filter(line => line.startsWith('data: '));
+                        
+                        for (const line of lines) {
+                            const data = line.substring(6);
+                            if (data.trim() === '[DONE]') break;
+                            try {
+                                const parsed = JSON.parse(data);
+                                if (parsed.choices[0].delta.content) {
+                                    fullContent += parsed.choices[0].delta.content;
+                                    resultContent.textContent = fullContent;
+                                }
+                            } catch (e) {
+                                console.error('Error parsing stream data:', e);
+                            }
+                        }
+                    }
+                } else {
+                    const data = await response.json();
+                    resultContent.textContent = data.choices[0].message.content;
+                }
+            } catch (error) {
+                resultDiv.className = 'result error';
+                resultContent.innerHTML = `<h4>请求失败</h4><p>${error.message}</p>`;
+                resultDiv.style.display = 'block';
+            } finally {
+                btn.disabled = false;
+                loading.style.display = 'none';
+            }
+        }
+        // END: 新增的聊天测试功能
+
         // 页面加载时检查是否有API Key
         document.addEventListener('DOMContentLoaded', function() {
             const apiKeyInput = document.getElementById('apiKeyInput');
@@ -767,16 +927,19 @@
             // 监听API Key输入变化
             apiKeyInput.addEventListener('input', function() {
                 const apiKey = this.value.trim();
+                document.getElementById('chatTestApiKey').value = apiKey; // 同步到聊天测试区域
                 if (apiKey) {
-                    // 自动加载模型列表
                     loadModels(apiKey);
                 } else {
                     const modelsList = document.getElementById('modelsList');
-                    modelsList.innerHTML = `
+                    const chatTestModelSelect = document.getElementById('chatTestModel');
+                    const initialHtml = `
                         <div style="text-align: center; color: #6e6e73; padding: 20px;">
                             请先获取 API Key 以查看可用模型
                         </div>
                     `;
+                    modelsList.innerHTML = initialHtml;
+                    chatTestModelSelect.innerHTML = '<option value="">请先输入 API Key 获取模型列表</option>';
                 }
             });
             
