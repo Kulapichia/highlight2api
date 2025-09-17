@@ -24,7 +24,7 @@ services:
 
 ## 📝 获取 API Key
 
-部署完成后，打开 `http://你的服务器IP:8080/highlight_login` 根据页面提示获取 API Key。
+部署完成后，打开 `http://你的服务器IP:9999/` 根据页面提示获取 API Key。
 
 ## 🎯 特性
 
