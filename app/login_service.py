@@ -47,10 +47,14 @@ async def process_highlight_login(login_link: str, proxy=None) -> Dict[str, Any]
             error_message = exchange_data.get('error', "未知错误")
             logger.error(f"登录失败详情: {error_message}")
             if "expired" in error_message or "invalid" in error_message:
-                raise LoginError("授权代码已过期或无效。请重新登录获取新的代码。")
+                raise LoginError("授权代码已过期或无效。授权代码只能使用一次，请重新登录获取新的代码。")
+            if "not found" in error_message:
+                raise LoginError("授权代码不存在，请检查是否复制完整。")
             if "already used" in error_message:
                 raise LoginError("此授权代码已被使用过，请重新登录获取新的代码。")
-            raise LoginError(f"登录失败: {error_message}。")
+            if "rate limit" in error_message:
+                raise LoginError("请求过于频繁，请稍等片刻后重试。")
+            raise LoginError(f"登录失败: {error_message}。如果问题持续存在，请重新获取授权代码。")
 
         at = exchange_data['data']['accessToken']
         rt = exchange_data['data']['refreshToken']
