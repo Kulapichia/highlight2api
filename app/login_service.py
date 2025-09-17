@@ -1,5 +1,3 @@
-import base64
-import json
 import re
 import uuid
 from typing import Dict, Any
@@ -10,92 +8,86 @@ from loguru import logger
 from .config import HIGHLIGHT_BASE_URL, TLS_VERIFY
 
 
+class LoginError(Exception):
+    pass
+
+
 async def process_highlight_login(login_link: str, proxy=None) -> Dict[str, Any]:
-    """处理 Highlight 登录流程"""
-    try:
-        # 提取 code
-        code_match = re.search(r'code=(.+)', login_link)
-        if not code_match:
-            raise ValueError("无法从链接中提取 code")
+    """处理 Highlight 登录流程, 成功则返回用户信息字典, 失败则抛出 LoginError"""
+    # 提取 code
+    code_match = re.search(r'code=(.+)', login_link)
+    if not code_match:
+        raise LoginError("无法从链接中提取 code，请确保链接格式正确")
 
-        code = code_match.group(1)
-        chrome_device_id = str(uuid.uuid4())
-        device_id = str(uuid.uuid4())
+    code = code_match.group(1)
+    chrome_device_id = str(uuid.uuid4())
+    device_id = str(uuid.uuid4())
 
+    async with AsyncSession(verify=TLS_VERIFY, timeout=30.0, impersonate='chrome', proxy=proxy) as client:
         # 第一步：交换 token
-        headers = {'Content-Type': 'application/json'}
-        json_data = {
-            'code': code,
-            'amplitudeDeviceId': chrome_device_id,
-        }
-
-        async with AsyncSession(verify=TLS_VERIFY, timeout=30.0, impersonate='chrome', proxy=proxy) as client:
-            response = await client.post(
+        try:
+            exchange_response = await client.post(
                 f'{HIGHLIGHT_BASE_URL}/api/v1/auth/exchange',
-                headers=headers,
-                json=json_data
+                headers={'Content-Type': 'application/json'},
+                json={'code': code, 'amplitudeDeviceId': chrome_device_id}
             )
+        except Exception as e:
+            logger.error(f"交换Token网络请求失败: {e}")
+            raise LoginError(f"网络请求失败: {e}")
 
-            if response.status_code != 200:
-                raise ValueError(f'登录失败 {response.status_code} {response.text}')
+        if exchange_response.status_code != 200:
+            error_text = exchange_response.text
+            logger.error(f"交换Token HTTP错误: {exchange_response.status_code} {error_text}")
+            if exchange_response.status_code == 400:
+                raise LoginError("请求格式错误，请检查授权代码是否正确或已过期")
+            raise LoginError(f"登录服务暂时不可用 (错误代码: {exchange_response.status_code})")
 
-            result = response.json()
-            if not result.get('success'):
-                raise ValueError(f'登录失败 {result}')
+        exchange_data = exchange_response.json()
+        if not exchange_data.get('success'):
+            error_message = exchange_data.get('error', "未知错误")
+            logger.error(f"登录失败详情: {error_message}")
+            if "expired" in error_message or "invalid" in error_message:
+                raise LoginError("授权代码已过期或无效。请重新登录获取新的代码。")
+            if "already used" in error_message:
+                raise LoginError("此授权代码已被使用过，请重新登录获取新的代码。")
+            raise LoginError(f"登录失败: {error_message}。")
 
-            at = result['data']['accessToken']
-            rt = result['data']['refreshToken']
+        at = exchange_data['data']['accessToken']
+        rt = exchange_data['data']['refreshToken']
 
-            # 第二步：注册客户端
-            headers = {
-                'Content-Type': 'application/json',
-                'authorization': f'Bearer {at}'
-            }
-
-            json_data = {"client_uuid": device_id}
-
+        # 第二步：注册客户端 (失败不影响主流程)
+        try:
             await client.post(
                 f'{HIGHLIGHT_BASE_URL}/api/v1/users/me/client',
-                headers=headers,
-                json=json_data
+                headers={'Content-Type': 'application/json', 'authorization': f'Bearer {at}'},
+                json={"client_uuid": device_id}
             )
+        except Exception as e:
+            logger.warning(f"注册客户端失败，但不影响登录: {e}")
 
-            # 第三步：获取用户信息
-            response = await client.get(
+        # 第三步：获取用户信息
+        try:
+            profile_response = await client.get(
                 f'{HIGHLIGHT_BASE_URL}/api/v1/auth/profile',
-                headers=headers
+                headers={'authorization': f'Bearer {at}'}
             )
-
-            if response.status_code != 200:
-                raise ValueError(f'获取用户信息失败 {response.status_code}')
-
-            profile = response.json()
+            profile_response.raise_for_status()
+            profile = profile_response.json()
             user_id = profile['id']
             email = profile['email']
+        except Exception as e:
+            logger.error(f"获取用户信息失败: {e}")
+            raise LoginError(f"无法获取用户信息，请重试。如果问题持续存在，请重新登录。")
 
-            # 生成 API Key
-            data = json.dumps({
-                'rt': rt,
-                'user_id': user_id,
-                'email': email,
-                'client_uuid': device_id,
-                'proxy': proxy
-            })
-            api_key = base64.urlsafe_b64encode(data.encode('utf-8')).decode('utf-8')
+        logger.success(f'登录成功: {user_id} {email}')
 
-            return {
-                'success': True,
-                'api_key': api_key,
-                'user_info': {
-                    'user_id': user_id,
-                    'email': email,
-                    'client_uuid': device_id
-                }
-            }
-
-    except Exception as e:
-        logger.error(f"登录处理失败: {str(e)}")
-        return {
-            'success': False,
-            'error': str(e)
+        user_info = {
+            'rt': rt,
+            'user_id': user_id,
+            'email': email,
+            'client_uuid': device_id
         }
+        if proxy:
+            user_info['proxy'] = proxy
+            
+        return user_info
