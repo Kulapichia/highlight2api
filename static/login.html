@@ -2,253 +2,797 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>Highlight AI 登录</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Highlight2API</title>
     <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            max-width: 600px;
-            margin: 50px auto;
-            padding: 20px;
-            background-color: #f5f5f5;
-        }
-
-        .container {
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        h1 {
-            color: #333;
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .step {
-            margin-bottom: 20px;
-            padding: 15px;
-            background: #f8f9fa;
-            border-radius: 5px;
-            border-left: 4px solid #007bff;
-        }
-
-        .step h3 {
-            margin-top: 0;
-            color: #007bff;
-        }
-
-        input[type="text"] {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 14px;
-            margin: 10px 0;
+        * {
+            margin: 0;
+            padding: 0;
             box-sizing: border-box;
         }
-
-        button {
-            background: #007bff;
-            color: white;
-            padding: 12px 24px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: #f5f5f7;
+            color: #1d1d1f;
+            line-height: 1.6;
             font-size: 16px;
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+        }
+        
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 20px 16px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #e5e5e7;
+        }
+        
+        .header h1 {
+            font-size: 36px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: #1d1d1f;
+            margin-bottom: 12px;
+        }
+        
+        .header p {
+            font-size: 18px;
+            color: #6e6e73;
+            font-weight: 400;
+        }
+        
+        .section {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 16px;
+            border: 1px solid #e5e5e7;
+        }
+        
+        .section-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #1d1d1f;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .step-number {
+            width: 28px;
+            height: 28px;
+            background: #1d1d1f;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .section-content {
+            color: #6e6e73;
+            font-size: 15px;
+            line-height: 1.4;
+            margin-bottom: 16px;
+        }
+        
+        .url-box {
+            background: #f5f5f7;
+            border: 1px solid #d2d2d7;
+            border-radius: 8px;
+            padding: 12px;
+            margin: 12px 0;
+            font-family: 'SF Mono', Monaco, monospace;
+            font-size: 13px;
+            color: #1d1d1f;
+            word-break: break-all;
+            line-height: 1.3;
+        }
+        
+        .form-group {
+            margin: 16px 0;
+        }
+        
+        .form-label {
+            display: block;
+            font-size: 15px;
+            font-weight: 500;
+            color: #1d1d1f;
+            margin-bottom: 6px;
+        }
+        
+        .form-input {
             width: 100%;
-            margin-top: 10px;
+            padding: 12px 16px;
+            border: 1px solid #d2d2d7;
+            border-radius: 8px;
+            font-size: 15px;
+            background: #ffffff;
+            color: #1d1d1f;
+            transition: border-color 0.15s ease;
         }
-
-        button:hover {
-            background: #0056b3;
+        
+        .form-input:focus {
+            outline: none;
+            border-color: #007aff;
         }
-
-        button:disabled {
-            background: #6c757d;
+        
+        .form-input::placeholder {
+            color: #a1a1a6;
+        }
+        
+        .btn {
+            display: inline-block;
+            width: 100%;
+            padding: 12px 20px;
+            background: #1d1d1f;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.15s ease;
+            text-align: center;
+        }
+        
+        .btn:hover {
+            background: #424245;
+        }
+        
+        .btn:disabled {
+            background: #d2d2d7;
+            color: #a1a1a6;
             cursor: not-allowed;
         }
-
+        
+        .btn-secondary {
+            background: #f5f5f7;
+            color: #1d1d1f;
+            border: 1px solid #d2d2d7;
+        }
+        
+        .btn-secondary:hover {
+            background: #e5e5e7;
+        }
+        
+        .btn-small {
+            padding: 8px 16px;
+            font-size: 14px;
+            width: auto;
+            display: inline-block;
+        }
+        
+        .btn-test {
+            background: #007aff;
+            margin-left: 8px;
+        }
+        
+        .btn-test:hover {
+            background: #0056cc;
+        }
+        
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 16px;
+            color: #6e6e73;
+            font-size: 15px;
+        }
+        
+        .loading-spinner {
+            width: 16px;
+            height: 16px;
+            border: 2px solid #d2d2d7;
+            border-top: 2px solid #1d1d1f;
+            border-radius: 50%;
+            display: inline-block;
+            animation: spin 1s linear infinite;
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
         .result {
-            margin-top: 20px;
-            padding: 15px;
-            border-radius: 5px;
+            margin-top: 16px;
+            padding: 16px;
+            border-radius: 8px;
             display: none;
         }
-
-        .success {
-            background: #d4edda;
-            border: 1px solid #c3e6cb;
-            color: #155724;
+        
+        .result.success {
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            color: #166534;
         }
-
-        .error {
-            background: #f8d7da;
-            border: 1px solid #f5c6cb;
-            color: #721c24;
+        
+        .result.error {
+            background: #fef2f2;
+            border: 1px solid #fecaca;
+            color: #dc2626;
         }
-
-        .api-key {
+        
+        .result h4 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .api-key-section {
+            margin-top: 16px;
+            padding: 16px;
             background: #f8f9fa;
-            border: 1px solid #dee2e6;
-            padding: 10px;
-            border-radius: 5px;
-            font-family: monospace;
-            word-break: break-all;
-            margin-top: 10px;
+            border-radius: 8px;
+            border: 1px solid #e5e5e7;
         }
-
-        .copy-btn {
-            background: #28a745;
-            padding: 5px 10px;
+        
+        .api-key-label {
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #1d1d1f;
+            font-size: 14px;
+        }
+        
+        .api-key-box {
+            background: #ffffff;
+            border: 1px solid #d2d2d7;
+            border-radius: 6px;
+            padding: 12px;
+            font-family: 'SF Mono', Monaco, monospace;
             font-size: 12px;
-            margin-top: 5px;
-            width: auto;
+            word-break: break-all;
+            color: #1d1d1f;
+            margin-bottom: 8px;
         }
-
+        
+        .copy-btn {
+            background: #007aff;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+        }
+        
         .copy-btn:hover {
-            background: #218838;
+            background: #0056cc;
         }
-
-        a {
-            color: #007bff;
-            text-decoration: none;
+        
+        .success-message {
+            margin-top: 16px;
+            padding: 16px;
+            background: #f0fdf4;
+            border-radius: 8px;
+            border: 1px solid #bbf7d0;
         }
-
-        a:hover {
-            text-decoration: underline;
+        
+        .success-title {
+            font-weight: 600;
+            color: #166534;
+            margin-bottom: 6px;
+            font-size: 14px;
+        }
+        
+        .success-content {
+            color: #166534;
+            line-height: 1.4;
+            font-size: 14px;
+        }
+        
+        .success-content code {
+            background: #ffffff;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'SF Mono', Monaco, monospace;
+            font-size: 12px;
+            border: 1px solid #bbf7d0;
+        }
+        
+        .info-section {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 16px;
+            border: 1px solid #e5e5e7;
+        }
+        
+        .info-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #1d1d1f;
+            margin-bottom: 12px;
+        }
+        
+        .models-grid {
+            display: grid;
+            gap: 8px;
+            margin-top: 12px;
+        }
+        
+        .model-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            background: #ffffff;
+            border: 1px solid #e5e5e7;
+            border-radius: 6px;
+        }
+        
+        .model-name {
+            font-weight: 500;
+            color: #1d1d1f;
+            font-size: 14px;
+        }
+        
+        .model-provider {
+            font-size: 12px;
+            color: #6e6e73;
+        }
+        
+        .input-row {
+            display: flex;
+            gap: 8px;
+            align-items: stretch;
+        }
+        
+        .input-row .form-input {
+            flex: 1;
+        }
+        
+        .input-row .btn {
+            height: auto;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 16px 12px;
+            }
+            
+            .header h1 {
+                font-size: 28px;
+            }
+            
+            .header p {
+                font-size: 16px;
+            }
+            
+            .section {
+                padding: 16px;
+            }
+            
+            .input-row {
+                flex-direction: column;
+                gap: 8px;
+            }
+            
+            .btn-small {
+                width: 100%;
+            }
         }
     </style>
 </head>
 <body>
-<div class="container">
-    <h1>🎯 Highlight AI 登录</h1>
-
-    <div class="step">
-        <h3>步骤 1: 打开登录页面</h3>
-        <p>点击下面的链接打开 Highlight AI 登录页面：</p>
-        <a href="https://chat-backend.highlightai.com/api/v1/auth/signin?screenHint=sign-in" target="_blank">
-            https://chat-backend.highlightai.com/api/v1/auth/signin?screenHint=sign-in
-        </a>
+    <div class="container">
+        <div class="header">
+            <h1>Highlight2API</h1>
+        </div>
+        
+        <div class="info-section">
+            <div class="info-title">支持的模型</div>
+            <div id="modelsList">
+                <div style="text-align: center; color: #6e6e73; padding: 20px;">
+                    请先获取 API Key 以查看可用模型
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <div class="section-title">
+                <span class="step-number">1</span>
+                API Key 有效性检测
+            </div>
+            <div class="section-content">
+                您可以使用现有的 API Key，或者通过登录生成新的 API Key：
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label" for="apiKeyInput">API Key</label>
+                <div class="input-row">
+                    <input 
+                        type="text" 
+                        id="apiKeyInput" 
+                        class="form-input"
+                        placeholder="粘贴您的 API Key 或点击下方生成新的"
+                    />
+                    <button class="btn btn-small btn-test" onclick="testApiKey()">
+                        测试并获取可用模型
+                    </button>
+                </div>
+            </div>
+            
+            <div class="result" id="testResult">
+                <div id="testResultContent"></div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <div class="section-title">
+                <span class="step-number">2</span>
+                生成新的 API Key
+            </div>
+            <div class="section-content">
+                如果您没有 API Key，请通过登录生成：
+            </div>
+            <div class="url-box">
+                https://chat-backend.highlightai.com/api/v1/auth/signin?screenHint=sign-in
+            </div>
+            <button class="btn btn-secondary" onclick="openLoginPage()">
+                打开登录页面
+            </button>
+            
+            <div style="background: #fff3cd; border: 1px solid #ffeaa7; border-radius: 8px; padding: 12px; margin: 12px 0; color: #856404; font-size: 14px;">
+                <strong>重要提示：</strong><br>
+                1. 点击上方按钮打开登录页面<br>
+                2. 完成登录后，浏览器会跳转到新页面<br>
+                3. 在浏览器地址栏中找到类似这样的链接：<br>
+                <code style="background: #fff; padding: 2px 4px; border-radius: 3px;">https://highlightai.com/deeplink?code=01CKIO2YTC359TRVJ1QVNQP21A</code><br>
+                4. 复制 <strong>code=</strong> 后面的值（如：01CKIO2YTC359TRVJ1QVNQP21A）<br>
+                5. 粘贴到下方输入框中
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label" for="codeInput">授权代码（浏览器地址栏中 code= 后面的值）</label>
+                <input 
+                    type="text" 
+                    id="codeInput" 
+                    class="form-input"
+                    placeholder="例如：01CKIO2YTC359TRVJ1QVNQP21A"
+                />
+            </div>
+            
+            <button class="btn" onclick="login()" id="loginBtn">
+                生成 API Key
+            </button>
+            
+            <div class="loading" id="loading">
+                <span class="loading-spinner"></span>
+                正在处理...
+            </div>
+        </div>
+        
+        <div class="result" id="result">
+            <div id="resultContent"></div>
+        </div>
+        
+        <div class="info-section">
+            <div class="info-title">API 端点</div>
+            <div style="font-size: 14px; color: #6e6e73; line-height: 1.5;">
+                <strong>模型列表:</strong> GET /v1/models<br>
+                <strong>请求聊天:</strong> POST /v1/chat/completions<br>
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 40px; padding: 20px; border-top: 1px solid #e5e5e7;">
+            <div style="color: #6e6e73; font-size: 14px; margin-bottom: 8px;">
+                项目开源
+            </div>
+            <div style="color: #a1a1a6; font-size: 12px;">
+                感谢使用 Highlight2API 代理服务
+            </div>
+        </div>
     </div>
 
-    <div class="step">
-        <h3>步骤 2: 完成登录</h3>
-        <p>在新打开的页面中完成登录流程。</p>
-    </div>
-
-    <div class="step">
-        <h3>步骤 3: 复制登录链接</h3>
-        <p>登录成功后，复制浏览器地址栏中的链接（格式类似：https://highlightai.com/deeplink?code=xxxxxxx）</p>
-        <input id="loginLink" placeholder="粘贴登录链接到这里..." type="text"/>
-        <input id="proxy" placeholder="使用的代理，可选，支持s5/http (socks5://1.1.1.1:1234)" type="text"/>
-
-        <button id="loginBtn" onclick="processLogin()">获取 API Key</button>
-    </div>
-
-    <div class="result" id="result">
-        <div id="resultContent"></div>
-    </div>
-</div>
-
-<script>
-    async function processLogin() {
-        const loginLink = document.getElementById('loginLink').value.trim();
-        const btn = document.getElementById('loginBtn');
-        const result = document.getElementById('result');
-        const resultContent = document.getElementById('resultContent');
-        let proxy = document.getElementById('proxy').value.trim();
-        if (proxy === '') {
-            proxy = null;
+    <script>
+        function openLoginPage() {
+            window.open('https://chat-backend.highlightai.com/api/v1/auth/signin?screenHint=sign-in', '_blank');
         }
-
-        if (!loginLink) {
-            alert('请输入登录链接');
-            return;
-        }
-
-        if (!loginLink.includes('highlightai.com/deeplink?code=')) {
-            alert('登录链接格式不正确，应该包含 highlightai.com/deeplink?code=');
-            return;
-        }
-
-        btn.disabled = true;
-        btn.textContent = '处理中...';
-        result.style.display = 'none';
-
-        try {
-            const response = await fetch('/highlight_login_api', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    login_link: loginLink,
-                    proxy: proxy
-                })
-            });
-
-            const data = await response.json();
-
-            if (data.success) {
-                result.className = 'result success';
-                resultContent.innerHTML = `
-                        <h4>✅ 登录成功！</h4>
-                        <p><strong>用户邮箱:</strong> ${data.user_info.email}</p>
-                        <p><strong>用户ID:</strong> ${data.user_info.user_id}</p>
-                        <p><strong>API Key:</strong></p>
-                        <div class="api-key" id="apiKey">${data.api_key}</div>
-                        <button class="copy-btn" onclick="copyApiKey()">复制 API Key</button>
-                        <p style="margin-top: 15px; font-size: 14px; color: #666;">
-                            请保存好您的 API Key，用于调用 API 时的身份验证。
-                        </p>
-                    `;
-            } else {
-                result.className = 'result error';
-                resultContent.innerHTML = `
-                        <h4>❌ 登录失败</h4>
-                        <p>${data.message}</p>
-                    `;
+        
+        async function login() {
+            const codeInput = document.getElementById('codeInput');
+            const loginBtn = document.getElementById('loginBtn');
+            const loading = document.getElementById('loading');
+            const result = document.getElementById('result');
+            const resultContent = document.getElementById('resultContent');
+            
+            const code = codeInput.value.trim();
+            if (!code) {
+                showResult('error', '<h4>错误</h4><p>请输入授权代码</p>');
+                return;
             }
-
+            
+            // 显示加载状态
+            loginBtn.disabled = true;
+            loading.style.display = 'block';
+            result.style.display = 'none';
+            
+            try {
+                const response = await fetch('/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ code })
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok) {
+                    // 登录成功，生成 API Key
+                    const apiKey = btoa(JSON.stringify(data));
+                    showResult('success', `
+                        <h4>登录成功</h4>
+                        <p><strong>用户：</strong>${data.email}</p>
+                        <p><strong>用户 ID：</strong>${data.user_id}</p>
+                        
+                        <div class="api-key-section">
+                            <div class="api-key-label">您的 API Key</div>
+                            <div class="api-key-box" id="apiKeyText">${apiKey}</div>
+                            <button class="copy-btn" onclick="copyApiKey()">复制 API Key</button>
+                        </div>
+                        
+                        <div class="success-message">
+                            <div class="success-title">设置完成</div>
+                            <div class="success-content">
+                                您现在可以使用此 API Key 调用 OpenAI 兼容的接口。<br>
+                                请在 Authorization header 中添加：<br>
+                                <code>Authorization: Bearer YOUR_API_KEY</code>
+                            </div>
+                        </div>
+                    `);
+                    
+                    // 自动加载模型列表
+                    await loadModels(apiKey);
+                } else {
+                    showResult('error', `<h4>登录失败</h4><p>${data.error}</p>`);
+                }
+            } catch (error) {
+                showResult('error', `<h4>请求失败</h4><p>${error.message}</p>`);
+            } finally {
+                loginBtn.disabled = false;
+                loading.style.display = 'none';
+            }
+        }
+        
+        function showResult(type, content) {
+            const result = document.getElementById('result');
+            const resultContent = document.getElementById('resultContent');
+            
+            result.className = `result ${type}`;
+            resultContent.innerHTML = content;
             result.style.display = 'block';
-
-        } catch (error) {
-            result.className = 'result error';
-            resultContent.innerHTML = `
-                    <h4>❌ 请求失败</h4>
-                    <p>网络错误或服务器异常: ${error.message}</p>
+            
+            // 平滑滚动到结果区域
+            result.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+        
+        function copyApiKey() {
+            const apiKeyText = document.getElementById('apiKeyText').textContent;
+            navigator.clipboard.writeText(apiKeyText).then(() => {
+                const btn = event.target;
+                const originalText = btn.textContent;
+                btn.textContent = '已复制';
+                setTimeout(() => {
+                    btn.textContent = originalText;
+                }, 2000);
+            }).catch(err => {
+                console.error('复制失败:', err);
+                // 备用方案：选中文本
+                const selection = window.getSelection();
+                const range = document.createRange();
+                range.selectNodeContents(document.getElementById('apiKeyText'));
+                selection.removeAllRanges();
+                selection.addRange(range);
+            });
+        }
+        
+        async function testApiKey() {
+            const apiKeyInput = document.getElementById('apiKeyInput');
+            const testResult = document.getElementById('testResult');
+            const testResultContent = document.getElementById('testResultContent');
+            
+            const apiKey = apiKeyInput.value.trim();
+            if (!apiKey) {
+                showTestResult('error', '<h4>错误</h4><p>请先输入 API Key</p>');
+                return;
+            }
+            
+            try {
+                const response = await fetch('/v1/models', {
+                    headers: {
+                        'Authorization': `Bearer ${apiKey}`
+                    }
+                });
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    showTestResult('success', `
+                        <h4>API Key 有效</h4>
+                        <p>成功获取到 ${data.data.length} 个可用模型</p>
+                    `);
+                    
+                    // 自动显示模型列表
+                    displayModels(data.data);
+                } else {
+                    const errorData = await response.json();
+                    showTestResult('error', `<h4>API Key 无效</h4><p>${errorData.error || '验证失败'}</p>`);
+                }
+            } catch (error) {
+                showTestResult('error', `<h4>测试失败</h4><p>${error.message}</p>`);
+            }
+        }
+        
+        function showTestResult(type, content) {
+            const testResult = document.getElementById('testResult');
+            const testResultContent = document.getElementById('testResultContent');
+            
+            testResult.className = `result ${type}`;
+            testResultContent.innerHTML = content;
+            testResult.style.display = 'block';
+        }
+        
+        async function loadModels(apiKey) {
+            const modelsList = document.getElementById('modelsList');
+            
+            // 显示加载状态
+            modelsList.innerHTML = `
+                <div style="text-align: center; color: #6e6e73; padding: 16px;">
+                    <span class="loading-spinner" style="margin-right: 8px;"></span>
+                    正在加载模型列表...
+                </div>
+            `;
+            
+            try {
+                const response = await fetch('/v1/models', {
+                    headers: {
+                        'Authorization': `Bearer ${apiKey}`
+                    }
+                });
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    displayModels(data.data);
+                } else {
+                    modelsList.innerHTML = `
+                        <div style="text-align: center; color: #dc2626; padding: 16px;">
+                            加载失败，请检查 API Key
+                        </div>
+                    `;
+                }
+            } catch (error) {
+                modelsList.innerHTML = `
+                    <div style="text-align: center; color: #dc2626; padding: 16px;">
+                        网络错误: ${error.message}
+                    </div>
                 `;
-            result.style.display = 'block';
-        } finally {
-            btn.disabled = false;
-            btn.textContent = '获取 API Key';
+            }
         }
-    }
-
-    function copyApiKey() {
-        const apiKey = document.getElementById('apiKey').textContent;
-        navigator.clipboard.writeText(apiKey).then(() => {
-            alert('API Key 已复制到剪贴板');
-        }).catch(() => {
-            // 降级方案
-            const textArea = document.createElement('textarea');
-            textArea.value = apiKey;
-            document.body.appendChild(textArea);
-            textArea.select();
-            document.execCommand('copy');
-            document.body.removeChild(textArea);
-            alert('API Key 已复制到剪贴板');
+        
+        function displayModels(models) {
+            const modelsList = document.getElementById('modelsList');
+            
+            if (!models || models.length === 0) {
+                modelsList.innerHTML = `
+                    <div style="text-align: center; color: #6e6e73; padding: 16px;">
+                        未找到可用模型
+                    </div>
+                `;
+                return;
+            }
+            
+            // 按提供商分组模型
+            const modelsByProvider = models.reduce((acc, model) => {
+                const provider = model.owned_by || 'Unknown';
+                if (!acc[provider]) acc[provider] = [];
+                acc[provider].push(model);
+                return acc;
+            }, {});
+            
+            let html = '';
+            for (const [provider, providerModels] of Object.entries(modelsByProvider)) {
+                html += `
+                    <div style="margin-bottom: 16px;">
+                        <div style="font-weight: 600; color: #1d1d1f; margin-bottom: 8px; font-size: 14px;">
+                            ${provider} (${providerModels.length} 个模型)
+                        </div>
+                        <div class="models-grid">
+                `;
+                
+                providerModels.forEach(model => {
+                    html += `
+                        <div class="model-item">
+                            <div>
+                                <div class="model-name">${model.id}</div>
+                                <div class="model-provider">${provider}</div>
+                            </div>
+                            <button onclick="copyModelName('${model.id}')" class="btn btn-small copy-btn">
+                                复制
+                            </button>
+                        </div>
+                    `;
+                });
+                
+                html += `
+                        </div>
+                    </div>
+                `;
+            }
+            
+            modelsList.innerHTML = html;
+        }
+        
+        function copyModelName(modelName) {
+            navigator.clipboard.writeText(modelName).then(() => {
+                // 临时显示复制成功的反馈
+                const btn = event.target;
+                const originalText = btn.textContent;
+                btn.textContent = '已复制';
+                btn.style.background = '#bbf7d0';
+                btn.style.color = '#166534';
+                setTimeout(() => {
+                    btn.textContent = originalText;
+                    btn.style.background = '#007aff';
+                    btn.style.color = 'white';
+                }, 1500);
+            }).catch(err => {
+                console.error('复制失败:', err);
+            });
+        }
+        
+        // 页面加载时检查是否有API Key
+        document.addEventListener('DOMContentLoaded', function() {
+            const apiKeyInput = document.getElementById('apiKeyInput');
+            
+            // 监听API Key输入变化
+            apiKeyInput.addEventListener('input', function() {
+                const apiKey = this.value.trim();
+                if (apiKey) {
+                    // 自动加载模型列表
+                    loadModels(apiKey);
+                } else {
+                    const modelsList = document.getElementById('modelsList');
+                    modelsList.innerHTML = `
+                        <div style="text-align: center; color: #6e6e73; padding: 20px;">
+                            请先获取 API Key 以查看可用模型
+                        </div>
+                    `;
+                }
+            });
+            
+            // 回车键提交
+            document.getElementById('codeInput').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    login();
+                }
+            });
+            
+            document.getElementById('apiKeyInput').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    testApiKey();
+                }
+            });
         });
-    }
-
-    // 回车键提交
-    document.getElementById('loginLink').addEventListener('keypress', function (e) {
-        if (e.key === 'Enter') {
-            processLogin();
-        }
-    });
-</script>
+    </script>
 </body>
 </html>
