@@ -739,6 +739,12 @@
     "input": 0.15
   },
   {
+    "model": "K2.6",
+    "type": "times",
+    "channel_type": 1,
+    "input": 0.15
+  },
+  {
     "model": "Kimi-K2",
     "type": "times",
     "channel_type": 1,
@@ -758,6 +764,12 @@
   },
   {
     "model": "Kimi-K2.5",
+    "type": "times",
+    "channel_type": 1,
+    "input": 0.15
+  },
+  {
+    "model": "Kimi-k2.6",
     "type": "times",
     "channel_type": 1,
     "input": 0.15
@@ -800,6 +812,12 @@
   },
   {
     "model": "LoRA/Qwen/Qwen2.5-7B-Instruct",
+    "type": "times",
+    "channel_type": 1,
+    "input": 0.15
+  },
+  {
+    "model": "LongCat-2.0-Preview",
     "type": "times",
     "channel_type": 1,
     "input": 0.15
@@ -2324,6 +2342,18 @@
     "input": 0.15
   },
   {
+    "model": "arena-fast",
+    "type": "times",
+    "channel_type": 1,
+    "input": 0.15
+  },
+  {
+    "model": "arena-smart",
+    "type": "times",
+    "channel_type": 1,
+    "input": 0.15
+  },
+  {
     "model": "arrow-preview",
     "type": "times",
     "channel_type": 1,
@@ -2917,7 +2947,20 @@
     "output": 1.5
   },
   {
+    "model": "claude-3.7-sonnet-thinking",
+    "type": "tokens",
+    "channel_type": 1,
+    "input": 37.5,
+    "output": 1.5
+  },
+  {
     "model": "claude-4-opus",
+    "type": "times",
+    "channel_type": 1,
+    "input": 5
+  },
+  {
+    "model": "claude-4-opus-thinking",
     "type": "times",
     "channel_type": 1,
     "input": 5
@@ -2935,7 +2978,19 @@
     "input": 5
   },
   {
+    "model": "claude-4-sonnet-thinking",
+    "type": "times",
+    "channel_type": 1,
+    "input": 5
+  },
+  {
     "model": "claude-4.1-opus",
+    "type": "times",
+    "channel_type": 1,
+    "input": 5
+  },
+  {
+    "model": "claude-4.1-opus-thinking",
     "type": "times",
     "channel_type": 1,
     "input": 5
@@ -2966,6 +3021,12 @@
   },
   {
     "model": "claude-4.5-opus-high",
+    "type": "times",
+    "channel_type": 1,
+    "input": 8
+  },
+  {
+    "model": "claude-4.5-opus-thinking",
     "type": "times",
     "channel_type": 1,
     "input": 8
@@ -3014,6 +3075,12 @@
   },
   {
     "model": "claude-4.5-sonnet-think",
+    "type": "times",
+    "channel_type": 1,
+    "input": 8
+  },
+  {
+    "model": "claude-4.5-sonnet-thinking",
     "type": "times",
     "channel_type": 1,
     "input": 8
@@ -3426,6 +3493,12 @@
     "input": 0.15
   },
   {
+    "model": "claude-opus-4-7-medium",
+    "type": "times",
+    "channel_type": 1,
+    "input": 0.15
+  },
+  {
     "model": "claude-opus-4-latest",
     "type": "times",
     "channel_type": 1,
@@ -3461,6 +3534,13 @@
   },
   {
     "model": "claude-opus-4.6-think",
+    "type": "tokens",
+    "channel_type": 1,
+    "input": 37.5,
+    "output": 4
+  },
+  {
+    "model": "claude-opus-4.6-thinking",
     "type": "tokens",
     "channel_type": 1,
     "input": 37.5,
@@ -3574,6 +3654,12 @@
     "output": 4
   },
   {
+    "model": "claude-sonnet-4-7",
+    "type": "times",
+    "channel_type": 1,
+    "input": 0.15
+  },
+  {
     "model": "claude-sonnet-4-latest",
     "type": "times",
     "channel_type": 1,
@@ -3641,6 +3727,13 @@
     "output": 4
   },
   {
+    "model": "claude-sonnet-4.6-1m",
+    "type": "tokens",
+    "channel_type": 1,
+    "input": 37.5,
+    "output": 4
+  },
+  {
     "model": "claude-sonnet-4.6-agentic",
     "type": "tokens",
     "channel_type": 1,
@@ -3663,6 +3756,13 @@
   },
   {
     "model": "claude-sonnet-4.6-thinking",
+    "type": "tokens",
+    "channel_type": 1,
+    "input": 37.5,
+    "output": 4
+  },
+  {
+    "model": "claude-sonnet-4.6-thinking-1m",
     "type": "tokens",
     "channel_type": 1,
     "input": 37.5,
@@ -3779,6 +3879,12 @@
   },
   {
     "model": "codestral:latest",
+    "type": "times",
+    "channel_type": 1,
+    "input": 0.15
+  },
+  {
+    "model": "codex-auto-review",
     "type": "times",
     "channel_type": 1,
     "input": 0.15
@@ -4339,6 +4445,18 @@
     "input": 0.15
   },
   {
+    "model": "deepseek-ai/deepseek-v4-flash",
+    "type": "times",
+    "channel_type": 1,
+    "input": 0.15
+  },
+  {
+    "model": "deepseek-ai/deepseek-v4-pro",
+    "type": "times",
+    "channel_type": 1,
+    "input": 0.15
+  },
+  {
     "model": "deepseek-ai/deepseek-vl2",
     "type": "times",
     "channel_type": 1,
@@ -4657,6 +4775,12 @@
     "input": 0.15
   },
   {
+    "model": "deepseek-v3-2",
+    "type": "times",
+    "channel_type": 1,
+    "input": 0.15
+  },
+  {
     "model": "deepseek-v3-2-exp",
     "type": "times",
     "channel_type": 1,
@@ -4754,6 +4878,30 @@
   },
   {
     "model": "deepseek-v3.2:cloud",
+    "type": "times",
+    "channel_type": 1,
+    "input": 0.15
+  },
+  {
+    "model": "deepseek-v4-flash",
+    "type": "times",
+    "channel_type": 1,
+    "input": 0.15
+  },
+  {
+    "model": "deepseek-v4-flash-2cc",
+    "type": "times",
+    "channel_type": 1,
+    "input": 0.15
+  },
+  {
+    "model": "deepseek-v4-pro",
+    "type": "times",
+    "channel_type": 1,
+    "input": 0.15
+  },
+  {
+    "model": "deepseek-v4-pro-2cc",
     "type": "times",
     "channel_type": 1,
     "input": 0.15
@@ -6976,6 +7124,41 @@
     "output": 2.5
   },
   {
+    "model": "gemini-3.0-flash",
+    "type": "tokens",
+    "channel_type": 1,
+    "input": 37.5,
+    "output": 1.5
+  },
+  {
+    "model": "gemini-3.0-flash-high",
+    "type": "tokens",
+    "channel_type": 1,
+    "input": 37.5,
+    "output": 1.5
+  },
+  {
+    "model": "gemini-3.0-flash-low",
+    "type": "tokens",
+    "channel_type": 1,
+    "input": 37.5,
+    "output": 1.5
+  },
+  {
+    "model": "gemini-3.0-flash-minimal",
+    "type": "tokens",
+    "channel_type": 1,
+    "input": 37.5,
+    "output": 1.5
+  },
+  {
+    "model": "gemini-3.0-pro",
+    "type": "tokens",
+    "channel_type": 1,
+    "input": 37.5,
+    "output": 2.5
+  },
+  {
     "model": "gemini-3.0-pro-image-four-three",
     "type": "tokens",
     "channel_type": 1,
@@ -9057,6 +9240,13 @@
     "output": 2.5
   },
   {
+    "model": "gpt-5-5-low",
+    "type": "tokens",
+    "channel_type": 1,
+    "input": 37.5,
+    "output": 2.5
+  },
+  {
     "model": "gpt-5-all",
     "type": "tokens",
     "channel_type": 1,
@@ -9575,7 +9765,21 @@
     "output": 2.5
   },
   {
+    "model": "gpt-5.1-fast",
+    "type": "tokens",
+    "channel_type": 1,
+    "input": 37.5,
+    "output": 2.5
+  },
+  {
     "model": "gpt-5.1-high",
+    "type": "tokens",
+    "channel_type": 1,
+    "input": 37.5,
+    "output": 2.5
+  },
+  {
+    "model": "gpt-5.1-high-fast",
     "type": "tokens",
     "channel_type": 1,
     "input": 37.5,
@@ -9596,7 +9800,21 @@
     "output": 2.5
   },
   {
+    "model": "gpt-5.1-low-fast",
+    "type": "tokens",
+    "channel_type": 1,
+    "input": 37.5,
+    "output": 2.5
+  },
+  {
     "model": "gpt-5.1-medium",
+    "type": "tokens",
+    "channel_type": 1,
+    "input": 37.5,
+    "output": 2.5
+  },
+  {
+    "model": "gpt-5.1-medium-fast",
     "type": "tokens",
     "channel_type": 1,
     "input": 37.5,
@@ -9757,6 +9975,13 @@
     "output": 2.5
   },
   {
+    "model": "gpt-5.2-codex-high-fast",
+    "type": "tokens",
+    "channel_type": 1,
+    "input": 37.5,
+    "output": 2.5
+  },
+  {
     "model": "gpt-5.2-codex-low",
     "type": "tokens",
     "channel_type": 1,
@@ -9764,7 +9989,21 @@
     "output": 2.5
   },
   {
+    "model": "gpt-5.2-codex-low-fast",
+    "type": "tokens",
+    "channel_type": 1,
+    "input": 37.5,
+    "output": 2.5
+  },
+  {
     "model": "gpt-5.2-codex-medium",
+    "type": "tokens",
+    "channel_type": 1,
+    "input": 37.5,
+    "output": 2.5
+  },
+  {
+    "model": "gpt-5.2-codex-medium-fast",
     "type": "tokens",
     "channel_type": 1,
     "input": 37.5,
@@ -9785,7 +10024,21 @@
     "output": 2.5
   },
   {
+    "model": "gpt-5.2-codex-xhigh-fast",
+    "type": "tokens",
+    "channel_type": 1,
+    "input": 37.5,
+    "output": 2.5
+  },
+  {
     "model": "gpt-5.2-high",
+    "type": "tokens",
+    "channel_type": 1,
+    "input": 37.5,
+    "output": 2.5
+  },
+  {
+    "model": "gpt-5.2-high-fast",
     "type": "tokens",
     "channel_type": 1,
     "input": 37.5,
@@ -9806,6 +10059,13 @@
     "output": 2.5
   },
   {
+    "model": "gpt-5.2-low-fast",
+    "type": "tokens",
+    "channel_type": 1,
+    "input": 37.5,
+    "output": 2.5
+  },
+  {
     "model": "gpt-5.2-medium",
     "type": "tokens",
     "channel_type": 1,
@@ -9813,7 +10073,21 @@
     "output": 2.5
   },
   {
+    "model": "gpt-5.2-medium-fast",
+    "type": "tokens",
+    "channel_type": 1,
+    "input": 37.5,
+    "output": 2.5
+  },
+  {
     "model": "gpt-5.2-none",
+    "type": "tokens",
+    "channel_type": 1,
+    "input": 37.5,
+    "output": 2.5
+  },
+  {
+    "model": "gpt-5.2-none-fast",
     "type": "tokens",
     "channel_type": 1,
     "input": 37.5,
@@ -9870,6 +10144,13 @@
   },
   {
     "model": "gpt-5.2-xhigh",
+    "type": "tokens",
+    "channel_type": 1,
+    "input": 37.5,
+    "output": 2.5
+  },
+  {
+    "model": "gpt-5.2-xhigh-fast",
     "type": "tokens",
     "channel_type": 1,
     "input": 37.5,
@@ -10254,6 +10535,34 @@
     "output": 2.5
   },
   {
+    "model": "gpt-5.5",
+    "type": "tokens",
+    "channel_type": 1,
+    "input": 37.5,
+    "output": 2.5
+  },
+  {
+    "model": "gpt-5.5-2cc",
+    "type": "tokens",
+    "channel_type": 1,
+    "input": 37.5,
+    "output": 2.5
+  },
+  {
+    "model": "gpt-5.5-2cx",
+    "type": "tokens",
+    "channel_type": 1,
+    "input": 37.5,
+    "output": 2.5
+  },
+  {
+    "model": "gpt-5.5-openai-compact",
+    "type": "tokens",
+    "channel_type": 1,
+    "input": 37.5,
+    "output": 2.5
+  },
+  {
     "model": "gpt-audio",
     "type": "times",
     "channel_type": 1,
@@ -10273,6 +10582,12 @@
   },
   {
     "model": "gpt-audio-mini-2025-10-06",
+    "type": "times",
+    "channel_type": 1,
+    "input": 0.15
+  },
+  {
+    "model": "gpt-auto",
     "type": "times",
     "channel_type": 1,
     "input": 0.15
@@ -10538,6 +10853,12 @@
   },
   {
     "model": "grok-3-mini-fast-beta-medium",
+    "type": "times",
+    "channel_type": 1,
+    "input": 0.15
+  },
+  {
+    "model": "grok-3-mini-thinking",
     "type": "times",
     "channel_type": 1,
     "input": 0.15
@@ -10884,6 +11205,13 @@
     "output": 1
   },
   {
+    "model": "grok-4.3-beta",
+    "type": "tokens",
+    "channel_type": 1,
+    "input": 37.5,
+    "output": 1
+  },
+  {
     "model": "grok-beta",
     "type": "times",
     "channel_type": 1,
@@ -11167,6 +11495,12 @@
   },
   {
     "model": "hunyuan-t1",
+    "type": "times",
+    "channel_type": 1,
+    "input": 0.15
+  },
+  {
+    "model": "hunyuan3-preview",
     "type": "times",
     "channel_type": 1,
     "input": 0.15
@@ -11633,6 +11967,12 @@
     "input": 0.15
   },
   {
+    "model": "kimi-k2-6",
+    "type": "times",
+    "channel_type": 1,
+    "input": 0.15
+  },
+  {
     "model": "kimi-k2-eco",
     "type": "times",
     "channel_type": 1,
@@ -11730,6 +12070,12 @@
   },
   {
     "model": "kimi-k2.6",
+    "type": "times",
+    "channel_type": 1,
+    "input": 0.15
+  },
+  {
+    "model": "kimi-k2.6-precision",
     "type": "times",
     "channel_type": 1,
     "input": 0.15
@@ -12479,7 +12825,25 @@
     "input": 0.15
   },
   {
+    "model": "longcat-flash-chat",
+    "type": "times",
+    "channel_type": 1,
+    "input": 0.15
+  },
+  {
     "model": "longcat-flash-lite",
+    "type": "times",
+    "channel_type": 1,
+    "input": 0.15
+  },
+  {
+    "model": "longcat-flash-thinking",
+    "type": "times",
+    "channel_type": 1,
+    "input": 0.15
+  },
+  {
+    "model": "longcat-flash-thinking-2cc",
     "type": "times",
     "channel_type": 1,
     "input": 0.15
@@ -13194,6 +13558,12 @@
   },
   {
     "model": "minimax-m2.7",
+    "type": "times",
+    "channel_type": 1,
+    "input": 0.15
+  },
+  {
+    "model": "minimax-m2.7-2cc",
     "type": "times",
     "channel_type": 1,
     "input": 0.15
@@ -14247,6 +14617,30 @@
     "type": "times",
     "channel_type": 1,
     "input": 0.15
+  },
+  {
+    "model": "model-claude-4-opus-byok",
+    "type": "times",
+    "channel_type": 1,
+    "input": 5
+  },
+  {
+    "model": "model-claude-4-opus-thinking-byok",
+    "type": "times",
+    "channel_type": 1,
+    "input": 5
+  },
+  {
+    "model": "model-claude-4-sonnet-byok",
+    "type": "times",
+    "channel_type": 1,
+    "input": 5
+  },
+  {
+    "model": "model-claude-4-sonnet-thinking-byok",
+    "type": "times",
+    "channel_type": 1,
+    "input": 5
   },
   {
     "model": "moonshot-v1-128k",
@@ -16338,6 +16732,12 @@
     "input": 0.15
   },
   {
+    "model": "qianfan-ocr",
+    "type": "times",
+    "channel_type": 1,
+    "input": 0.15
+  },
+  {
     "model": "qvq-72b-preview-0310-thinking-search",
     "type": "times",
     "channel_type": 1,
@@ -16422,6 +16822,12 @@
     "input": 0.15
   },
   {
+    "model": "qwen-3",
+    "type": "times",
+    "channel_type": 1,
+    "input": 0.15
+  },
+  {
     "model": "qwen-3-235b-a22b-instruct-2507",
     "type": "times",
     "channel_type": 1,
@@ -16435,6 +16841,12 @@
   },
   {
     "model": "qwen-3-32b",
+    "type": "times",
+    "channel_type": 1,
+    "input": 0.15
+  },
+  {
+    "model": "qwen-3-coder",
     "type": "times",
     "channel_type": 1,
     "input": 0.15
@@ -18834,6 +19246,12 @@
     "input": 0.15
   },
   {
+    "model": "qwen3.6-27b",
+    "type": "times",
+    "channel_type": 1,
+    "input": 0.15
+  },
+  {
     "model": "qwen3.6-35b",
     "type": "times",
     "channel_type": 1,
@@ -19681,6 +20099,30 @@
   },
   {
     "model": "swap_face",
+    "type": "times",
+    "channel_type": 1,
+    "input": 0.15
+  },
+  {
+    "model": "swe-1.5",
+    "type": "times",
+    "channel_type": 1,
+    "input": 0.15
+  },
+  {
+    "model": "swe-1.5-fast",
+    "type": "times",
+    "channel_type": 1,
+    "input": 0.15
+  },
+  {
+    "model": "swe-1.6",
+    "type": "times",
+    "channel_type": 1,
+    "input": 0.15
+  },
+  {
+    "model": "swe-1.6-fast",
     "type": "times",
     "channel_type": 1,
     "input": 0.15
@@ -21421,6 +21863,12 @@
   },
   {
     "model": "z-ai/glm-5",
+    "type": "times",
+    "channel_type": 1,
+    "input": 0.15
+  },
+  {
+    "model": "z-ai/glm-5.1",
     "type": "times",
     "channel_type": 1,
     "input": 0.15
