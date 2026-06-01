@@ -90,6 +90,12 @@
     "input": 1
   },
   {
+    "model": "AkashGen",
+    "type": "times",
+    "channel_type": 1,
+    "input": 1
+  },
+  {
     "model": "BAAI/bge-large-en-v1.5",
     "type": "times",
     "channel_type": 1,
@@ -507,6 +513,12 @@
     "input": 1
   },
   {
+    "model": "GLM-5-FP8",
+    "type": "times",
+    "channel_type": 1,
+    "input": 1
+  },
+  {
     "model": "GLM-5-Turbo",
     "type": "times",
     "channel_type": 1,
@@ -889,6 +901,12 @@
     "input": 1
   },
   {
+    "model": "Meta-Llama-3-3-70B-Instruct",
+    "type": "times",
+    "channel_type": 1,
+    "input": 1
+  },
+  {
     "model": "Meta-Llama-3.1-8B-Instruct",
     "type": "times",
     "channel_type": 1,
@@ -1100,6 +1118,12 @@
   },
   {
     "model": "Pro/BAAI/bge-m3",
+    "type": "times",
+    "channel_type": 1,
+    "input": 1
+  },
+  {
+    "model": "Pro/BAAI/bge-reranker-v2-m3",
     "type": "times",
     "channel_type": 1,
     "input": 1
@@ -1591,6 +1615,12 @@
     "input": 1
   },
   {
+    "model": "Qwen3.5-122B-A10B",
+    "type": "times",
+    "channel_type": 1,
+    "input": 1
+  },
+  {
     "model": "Qwen3.5-397B-A17B",
     "type": "times",
     "channel_type": 1,
@@ -2048,6 +2078,12 @@
   },
   {
     "model": "alibayram/medgemma:27b",
+    "type": "times",
+    "channel_type": 1,
+    "input": 1
+  },
+  {
+    "model": "allam-2-7b",
     "type": "times",
     "channel_type": 1,
     "input": 1
@@ -2751,6 +2787,18 @@
   },
   {
     "model": "bytedance/ui-tars-1.5-7b",
+    "type": "times",
+    "channel_type": 1,
+    "input": 1
+  },
+  {
+    "model": "canopylabs/orpheus-arabic-saudi",
+    "type": "times",
+    "channel_type": 1,
+    "input": 1
+  },
+  {
+    "model": "canopylabs/orpheus-v1-english",
     "type": "times",
     "channel_type": 1,
     "input": 1
@@ -5023,6 +5071,18 @@
     "input": 1
   },
   {
+    "model": "deepseek-v4-lite",
+    "type": "times",
+    "channel_type": 1,
+    "input": 1
+  },
+  {
+    "model": "deepseek-v4-lite-thinking",
+    "type": "times",
+    "channel_type": 1,
+    "input": 1
+  },
+  {
     "model": "deepseek-v4-pro",
     "type": "times",
     "channel_type": 1,
@@ -5036,6 +5096,12 @@
   },
   {
     "model": "deepseek-v4-pro[1m]",
+    "type": "times",
+    "channel_type": 1,
+    "input": 1
+  },
+  {
+    "model": "deepseek-v4-sc-thinking",
     "type": "times",
     "channel_type": 1,
     "input": 1
@@ -8429,6 +8495,27 @@
     "input": 1
   },
   {
+    "model": "glm-claude-haiku-4.5",
+    "type": "tokens",
+    "channel_type": 1,
+    "input": 37.5,
+    "output": 3.5
+  },
+  {
+    "model": "glm-claude-opus-4.6",
+    "type": "tokens",
+    "channel_type": 1,
+    "input": 37.5,
+    "output": 4
+  },
+  {
+    "model": "glm-claude-sonnet-4.6",
+    "type": "tokens",
+    "channel_type": 1,
+    "input": 37.5,
+    "output": 4
+  },
+  {
     "model": "glm-image",
     "type": "times",
     "channel_type": 1,
@@ -9322,6 +9409,12 @@
   },
   {
     "model": "gpt-4o-mini-tts",
+    "type": "times",
+    "channel_type": 1,
+    "input": 1
+  },
+  {
+    "model": "gpt-4o-mini-web",
     "type": "times",
     "channel_type": 1,
     "input": 1
@@ -11756,6 +11849,18 @@
     "input": 1
   },
   {
+    "model": "groq/compound",
+    "type": "times",
+    "channel_type": 1,
+    "input": 1
+  },
+  {
+    "model": "groq/compound-mini",
+    "type": "times",
+    "channel_type": 1,
+    "input": 1
+  },
+  {
     "model": "gryphe/mythomax-l2-13b",
     "type": "times",
     "channel_type": 1,
@@ -12907,6 +13012,12 @@
     "input": 1
   },
   {
+    "model": "llama-3.1-8b-instant",
+    "type": "times",
+    "channel_type": 1,
+    "input": 1
+  },
+  {
     "model": "llama-3.1-8b-instruct",
     "type": "times",
     "channel_type": 1,
@@ -12962,6 +13073,12 @@
   },
   {
     "model": "llama-3.3-70b-instruct-fp8-fast",
+    "type": "times",
+    "channel_type": 1,
+    "input": 1
+  },
+  {
+    "model": "llama-3.3-70b-versatile",
     "type": "times",
     "channel_type": 1,
     "input": 1
@@ -13483,7 +13600,19 @@
     "input": 1
   },
   {
+    "model": "meta-llama/llama-4-maverick-17b-128e-instruct",
+    "type": "times",
+    "channel_type": 1,
+    "input": 1
+  },
+  {
     "model": "meta-llama/llama-4-scout",
+    "type": "times",
+    "channel_type": 1,
+    "input": 1
+  },
+  {
+    "model": "meta-llama/llama-4-scout-17b-16e-instruct",
     "type": "times",
     "channel_type": 1,
     "input": 1
@@ -13502,6 +13631,18 @@
   },
   {
     "model": "meta-llama/llama-guard-4-12b",
+    "type": "times",
+    "channel_type": 1,
+    "input": 1
+  },
+  {
+    "model": "meta-llama/llama-prompt-guard-2-22m",
+    "type": "times",
+    "channel_type": 1,
+    "input": 1
+  },
+  {
+    "model": "meta-llama/llama-prompt-guard-2-86m",
     "type": "times",
     "channel_type": 1,
     "input": 1
@@ -15247,6 +15388,12 @@
     "input": 1
   },
   {
+    "model": "nano-banana-pro-preview",
+    "type": "times",
+    "channel_type": 1,
+    "input": 1
+  },
+  {
     "model": "nanobanana",
     "type": "times",
     "channel_type": 1,
@@ -15446,6 +15593,12 @@
   },
   {
     "model": "nova-pro-v1",
+    "type": "times",
+    "channel_type": 1,
+    "input": 1
+  },
+  {
+    "model": "nv-dinov2",
     "type": "times",
     "channel_type": 1,
     "input": 1
@@ -19614,6 +19767,12 @@
     "input": 1
   },
   {
+    "model": "qwen3.5-flash-2026-02-23",
+    "type": "times",
+    "channel_type": 1,
+    "input": 1
+  },
+  {
     "model": "qwen3.5-plus",
     "type": "times",
     "channel_type": 1,
@@ -20683,6 +20842,30 @@
     "input": 1
   },
   {
+    "model": "text-embedding-v1",
+    "type": "times",
+    "channel_type": 1,
+    "input": 1
+  },
+  {
+    "model": "text-embedding-v2",
+    "type": "times",
+    "channel_type": 1,
+    "input": 1
+  },
+  {
+    "model": "text-embedding-v3",
+    "type": "times",
+    "channel_type": 1,
+    "input": 1
+  },
+  {
+    "model": "text-embedding-v4",
+    "type": "times",
+    "channel_type": 1,
+    "input": 1
+  },
+  {
     "model": "text-moderation-latest",
     "type": "times",
     "channel_type": 1,
@@ -21690,6 +21873,18 @@
   },
   {
     "model": "whisper-1",
+    "type": "times",
+    "channel_type": 1,
+    "input": 1
+  },
+  {
+    "model": "whisper-large-v3",
+    "type": "times",
+    "channel_type": 1,
+    "input": 1
+  },
+  {
+    "model": "whisper-large-v3-turbo",
     "type": "times",
     "channel_type": 1,
     "input": 1
